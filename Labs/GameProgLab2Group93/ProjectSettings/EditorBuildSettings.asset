@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Plugins/Xfrog/OutdoorsScene.unity
-    guid: 8124e5870f4fd4c779e7a5f994e84ad1
+    path: Assets/Project/Scenes/House.unity
+    guid: c503505d4f111224487703ffe8f78f7e
+  - enabled: 1
+    path: Assets/Project/Scenes/Garden.unity
+    guid: 8f93e7343eaf98a4aab29cdf7c409500
   m_configObjects: {}
