@@ -1,6 +1,5 @@
 using System;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class RugCounter : MonoBehaviour
 {
@@ -9,8 +8,7 @@ public class RugCounter : MonoBehaviour
 
 	public static event Action<int> RugCollisionAdded;
 	private int _rugCount;
-	private const int RugCountTrigger = 4;
-	private const string NextScene = "Garden";
+	private const int RugCountTrigger = 3;
 
 	private void OnTriggerEnter(Collider other)
 	{
@@ -22,7 +20,7 @@ public class RugCounter : MonoBehaviour
 
 		if (_rugCount == RugCountTrigger)
 		{
-			SceneManager.LoadScene(NextScene);
+			SceneChanger.ChangeScene();
 		}
 	}
 }

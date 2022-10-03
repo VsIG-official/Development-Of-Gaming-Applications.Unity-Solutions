@@ -7,7 +7,7 @@ public class RugCounterText : MonoBehaviour
     private string _rugCountText = "Score is: ";
     private TextMeshProUGUI _text;
 
-    private void Start()
+	private void Start()
     {
         _text = GetComponent<TextMeshProUGUI>();
         RugCounter.RugCollisionAdded += UpdateRugCounter;
