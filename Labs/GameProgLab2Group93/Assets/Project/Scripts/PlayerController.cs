@@ -6,11 +6,11 @@ public class PlayerController : MonoBehaviour
 	[SerializeField]
 	private Transform _cameraTransform;
 	[SerializeField]
-	private float _playerSpeed = 2.0f;
+	private float _playerSpeed = 5;
 	[SerializeField]
-	private float _jumpHeight = 1.0f;
+	private float _jumpHeight = 1.5f;
 	[SerializeField]
-	private float _fallScale = -3f;
+	private float _fallSpeed = -3f;
 
 	private CharacterController _controller;
 	private PlayerMovement _playerMovement;
@@ -18,8 +18,8 @@ public class PlayerController : MonoBehaviour
 
 	private void Awake()
 	{
+		_controller = GetComponent<CharacterController>();
 		_playerMovement = new();
-		_controller = gameObject.GetComponent<CharacterController>();
 
 		Cursor.lockState = CursorLockMode.Locked;
 		Cursor.visible = false;
@@ -43,21 +43,21 @@ public class PlayerController : MonoBehaviour
 			_playerVelocity.y = 0f;
 		}
 
-		Vector2 movement = 
+		Vector2 input = 
 			_playerMovement.Player.Movement.ReadValue<Vector2>();
 
-		Vector3 controllerMovement = new(movement.x, 0, movement.y);
-		controllerMovement = 
-			_cameraTransform.forward * controllerMovement.z +
-			_cameraTransform.right * controllerMovement.x;
-		controllerMovement.y = 0f;
+		Vector3 movement = new(input.x, 0, input.y);
+		movement = 
+			_cameraTransform.forward * movement.z +
+			_cameraTransform.right * movement.x;
+		movement.y = 0f;
 
-		_controller.Move(_playerSpeed * Time.deltaTime * controllerMovement);
+		_controller.Move(_playerSpeed * Time.deltaTime * movement);
 
 		if (_playerMovement.Player.Jump.triggered && isGrounded)
 		{
 			_playerVelocity.y += Mathf.Sqrt(_jumpHeight *
-				_fallScale * Physics.gravity.y);
+				_fallSpeed * Physics.gravity.y);
 		}
 
 		_playerVelocity.y += Physics.gravity.y * Time.deltaTime;

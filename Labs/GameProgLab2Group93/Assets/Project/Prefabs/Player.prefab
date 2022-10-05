@@ -221,7 +221,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _cameraTransform: {fileID: 0}
   _playerSpeed: 5
-  _jumpHeight: 1
+  _jumpHeight: 1.5
+  _fallSpeed: -3
 --- !u!143 &6570330957091568281
 CharacterController:
   m_ObjectHideFlags: 0
